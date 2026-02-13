@@ -91,8 +91,7 @@ public class Cliente {
     @Column(name = "correo_electronico",  nullable = false, unique = true, length = 100)
     @NotBlank(message = "El_correo electronico es obligatorio")
     @Email(message = "El correo electronico debe tener un formato valido")
-    private String CorreoElectronico;
-
+    private String correoElectronico;
 
 /*
 
@@ -102,8 +101,8 @@ public class Cliente {
 
 
 
-    @Column(name = "fecha_naciemiento", nullable = false)
-    @NotBlank(message = "La fecha de nacimiento  es obligatoria")
+    @Column(name = "fecha_nacimiento", nullable = false)
+    @NotNull(message = "La fecha de nacimiento  es obligatoria")
     @Past(message = "la fecha de nacimiento debe ser anterior a la fecha  actual")
     private LocalDate fechaNacimiento;
 
@@ -137,7 +136,6 @@ public class Cliente {
      */
 
     @PrePersist
-
     protected void onCreated(){
         this.fechaCreacion = LocalDateTime.now();
         this.fechaModificacion = LocalDateTime.now();
@@ -148,7 +146,6 @@ public class Cliente {
     * actualiza la fecha de modificaciones automaticamente
     * */
     @PreUpdate
-
     protected void onUpdate(){
         this.fechaModificacion = LocalDateTime.now();
     }

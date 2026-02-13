@@ -94,7 +94,7 @@ public class Transaccion {
 /*
 * Metodo ejecutado  antes de persistir  la transaccion
 * establece la fecha  de la transaccion automaticamente*/
-
+    @PrePersist
     protected void onCreate(){
         this.fecha = LocalDateTime.now();
 

@@ -63,8 +63,7 @@ public class ClienteService {
 
         if (!Cliente.esMayorDeEdad()) {
             log.error("Intento de crear cliente menor de edad :{} años", Cliente.calcularEdad());
-            throw new BuisnessException("El cliente debe ser mayor de 18años. edad actual: " + Cliente.calcularEdad());
-        }
+            throw new BuisnessException("El cliente debe ser mayor de edad (18 años). Edad actual: " + Cliente.calcularEdad() + " años");        }
 
         //validación:número de identificación único
         if (clienteRepository.existsByNumeroIdentificacion(request.getNumeroIdentificacion())) {
@@ -122,7 +121,7 @@ public class ClienteService {
              ClienteExistente.setNombres(request.getNombres());
              ClienteExistente.setApellido(request.getApellido());
              ClienteExistente.setCorreoElectronico(request.getCorreoElectronico());
-             ClienteExistente.setFechaNacimiento(request.getFechaNacimieto());
+             ClienteExistente.setFechaNacimiento(request.getFechaNacimiento());
 
              //La fecha  de modificacion se  actualiza automaticamente con @PreUpdate
 

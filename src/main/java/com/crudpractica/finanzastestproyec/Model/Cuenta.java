@@ -80,7 +80,7 @@ public class Cuenta {
 
     /*
     * Indica si la cuenta esta exenta del gravamen a los  movimientos Financieros (GMF)*/
-    @Column(name = "fecha_creacion" , nullable = false)
+    @Column(name = "exenta_gmf" , nullable = false)  // ← NOMBRE CORRECTO
     private Boolean exentaGMF;
 
 
@@ -127,14 +127,14 @@ public class Cuenta {
 
 
     /*Lista  de transacciones recibidas en esta cuenta*/
-    @OneToMany(mappedBy = "CuentaDestino", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Transaccion> trasaccionesDestino;
+    @OneToMany(mappedBy = "cuentaDestino", cascade = CascadeType.ALL, fetch = FetchType.LAZY)    private List<Transaccion> trasaccionesDestino;
 
 
 
     /*Metodo  ejecutado antes de persistir  la cuenta
     * establce  la fecha  de creacion  y estado inicial*/
 
+    @PrePersist
     protected void onCreate(){
         this.fechaCreacion = LocalDateTime.now();
         this.fechaModificacion = LocalDateTime.now();
@@ -155,7 +155,7 @@ public class Cuenta {
     * Motodo ejecutando antes de actualizar la cuenta
     * Actualizar la fecha  de modificaciones automaticamente*/
 
-
+    @PreUpdate
     protected void onUpdate(){
         this.fechaModificacion = LocalDateTime.now();
     }

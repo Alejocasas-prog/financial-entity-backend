@@ -75,6 +75,9 @@ public class TransaccionService {
     }
 
     private void procesarRetiro(Cuenta cuenta, BigDecimal monto) {
+        if (!cuenta.estaActiva()) {
+            throw new BuisnessException("No se puede retirar de una cuenta inactiva");
+        }
         if (cuenta.getSaldo().compareTo(monto) < 0) {
             throw new BuisnessException("Saldo insuficiente");
         }
@@ -84,6 +87,9 @@ public class TransaccionService {
     }
 
     private void procesarTransferencia(Cuenta origen, Cuenta destino, BigDecimal monto) {
+        if (origen.getId().equals(destino.getId())) {
+            throw new BuisnessException("No se puede transferir a la misma cuenta");
+        }
         if (!destino.estaActiva()) {
             throw new BuisnessException("La cuenta destino no está activa");
         }

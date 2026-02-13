@@ -30,11 +30,12 @@ public interface CuentaRepository extends JpaRepository<Cuenta, Long> {
     * @return  Optional  conteniendo la cuenta  si existe, vacio en caso contrario
     *
     * */
-     Optional<Cuenta>finByNumeroCuenta(String numeroCuenta);
+     Optional<Cuenta>findByNumeroCuenta(String numeroCuenta);
 
 
      /*
      * Busca todas las  cuentas asociadas a un cliente
+     *
      *
      *
      * @param clienteId identificador del cliente

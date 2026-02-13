@@ -74,9 +74,9 @@ public class ClienteRequest {
      */
 
 
-    @NotBlank(message = "la fecha de nacimiento es obligatoria")
-    @Past(message = "la fecha de nacimiento  debe ser anterior a la fehca actual")
-    private LocalDate fechaNacimieto;
+    @NotNull(message = "La fecha de nacimiento es obligatoria")
+    @Past(message = "La fecha de nacimiento debe ser anterior a la fecha actual")
+    private LocalDate fechaNacimiento;
 
 }
 

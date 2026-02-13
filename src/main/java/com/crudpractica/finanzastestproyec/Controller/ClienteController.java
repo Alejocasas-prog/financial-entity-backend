@@ -57,9 +57,9 @@ public class ClienteController {
     * @return ResponseEntity con cliente encontrado y codigo  200
     * */
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<ClienteResponse>buscarPorId(@PathVariable Long id){
-        log.info("GET/api/clientes/{} - buscar cliente por id", id);
+        log.info("GET/api/clientes/{id} - buscar cliente por id", id);
         ClienteResponse response = clienteService.buscarporId(id);
         return ResponseEntity.ok(response);
 

@@ -111,7 +111,7 @@ public class CuentaService {
 
     @Transactional(readOnly = true)
     public CuentaResponse buscarPorNumeroCuenta(String numeroCuenta) {
-        Cuenta cuenta = cuentaRepository.finByNumeroCuenta(numeroCuenta)
+        Cuenta cuenta = cuentaRepository.findByNumeroCuenta(numeroCuenta)
                 .orElseThrow(() -> new BuisnessException("Cuenta no encontrada: " + numeroCuenta));
         return convertirAResponse(cuenta);
     }
